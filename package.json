@@ -13,8 +13,9 @@
     "express": "~4.12.4",
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1",
-    "mongodb": "1.4.15",
+    "mongodb": "2.0.33",
     "express-session": "1.9.1",
-    "connect-mongo": "0.4.1"
+    "connect-mongo": "0.8.1",
+    "connect-flash": "0.1.1"
   }
 }

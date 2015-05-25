@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var settings = require('./settings');
-var sessioin = require('express-session');
+var flash = require('connect-flash');
+var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //生成一个express实例 app
@@ -20,7 +21,8 @@ app.set('views', path.join(__dirname, 'views'));
 //设置视图模板引擎为 ejs
 app.set('view engine', 'ejs');
 
-
+//加载connect-flash
+app.use(flash());
 //设置/public/favicon.ico为favicon图标
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 //加载日志中间件
