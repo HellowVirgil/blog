@@ -131,6 +131,21 @@ module.exports = function(app) {
         res.redirect('/');//登出成功后跳转到主页
     });
 
+    //上传
+    app.get('/upload', checkLogin);
+    app.get('/upload', function (req, res) {
+        res.render('upload', {
+            title: '文件上传',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
+        });
+    });
+    app.post('/upload', checkLogin);
+    app.post('/upload', function (req, res) {
+        req.flash('success', '文件上传成功!');
+        res.redirect('/upload');
+    });
 
     //把用户登录状态的检查放到路由中间件中，在每个路径前增加路由中间件，即可实现页面权限控制
     //我们添加 checkNotLogin 和 checkLogin 函数来实现这个功能

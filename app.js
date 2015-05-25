@@ -4,12 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var settings = require('./settings');
 var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var multer = require('multer');
+
+var routes = require('./routes/index');
+var settings = require('./settings');
 
 //生成一个express实例 app
 var app = express();
@@ -21,6 +22,13 @@ app.set('views', path.join(__dirname, 'views'));
 //设置视图模板引擎为 ejs
 app.set('view engine', 'ejs');
 
+//加载multer，文件上传组件
+app.use(multer({
+    dest: './public/images',
+    rename: function (fieldname, filename) {
+        return filename;
+    }
+}));
 //加载connect-flash
 app.use(flash());
 //设置/public/favicon.ico为favicon图标
