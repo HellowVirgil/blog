@@ -29,7 +29,8 @@ Post.prototype.save = function(callback) {
         title: this.title,
         tags: this.tags,
         post: this.post,
-        comments: []
+        comments: [],
+        pv: 0
     };
     //打开数据库
     mongodb.open(function (err, db) {
@@ -98,6 +99,7 @@ Post.getTen = function(name, page, callback) {
 };
 
 //根据用户名、发表日期及文章名精确获取一篇文章
+//获取一篇文章
 Post.getOne = function(name, day, title, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
@@ -116,18 +118,31 @@ Post.getOne = function(name, day, title, callback) {
                 "time.day": day,
                 "title": title
             }, function (err, doc) {
-                mongodb.close();
                 if (err) {
+                    mongodb.close();
                     return callback(err);
                 }
-                //解析 markdown 为 html
                 if (doc) {
+                    //每访问 1 次，pv 值增加 1
+                    collection.update({
+                        "name": name,
+                        "time.day": day,
+                        "title": title
+                    }, {
+                        $inc: {"pv": 1}
+                    }, function (err) {
+                        mongodb.close();
+                        if (err) {
+                            return callback(err);
+                        }
+                    });
+                    //解析 markdown 为 html
                     doc.post = markdown.toHTML(doc.post);
                     doc.comments.forEach(function (comment) {
                         comment.content = markdown.toHTML(comment.content);
                     });
+                    callback(null, doc);//返回查询的一篇文章
                 }
-                callback(null, doc);//返回查询的一篇文章
             });
         });
     });
@@ -293,6 +308,37 @@ Post.getTag = function(tag, callback) {
             //并返回只含有 name、time、title 组成的数组
             collection.find({
                 "tags": tag
+            }, {
+                "name": 1,
+                "time": 1,
+                "title": 1
+            }).sort({
+                time: -1
+            }).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null, docs);
+            });
+        });
+    });
+};
+
+//返回通过标题关键字查询的所有文章信息
+Post.search = function(keyword, callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            var pattern = new RegExp(keyword, "i");
+            collection.find({
+                "title": pattern
             }, {
                 "name": 1,
                 "time": 1,
