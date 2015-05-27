@@ -8,6 +8,9 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var multer = require('multer');
+var fs = require('fs');
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
 
 var routes = require('./routes/index');
 var settings = require('./settings');
@@ -35,6 +38,7 @@ app.use(flash());
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 //加载日志中间件
 app.use(logger('dev'));
+app.use(logger({stream: accessLog}));
 //加载解析json的中间件
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,6 +46,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 //设置public文件夹为存放静态文件的目录
 app.use(express.static(path.join(__dirname, 'public')));
+//错误日志中间件
+app.use(function (err, req, res, next) {
+    var meta = '[' + new Date() + '] ' + req.url + '\n';
+    errorLog.write(meta + err.stack + '\n');
+    next();
+});
 //加载session
 app.use(session({
     secret: settings.cookieSecret,
