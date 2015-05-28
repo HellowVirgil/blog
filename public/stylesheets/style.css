@@ -79,7 +79,8 @@ article a:hover {
     color:#ff0000;
     font-weight:bold;
 }
-.prepage a:hover,.nextpage a:hover {
+.prepage a:hover,
+.nextpage a:hover {
     text-decoration:none;
     background-color:#ff0000;
     color:#f9f9f9;

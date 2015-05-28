@@ -35,7 +35,7 @@ app.use(multer({
 //加载connect-flash
 app.use(flash());
 //设置/public/favicon.ico为favicon图标
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 //加载日志中间件
 app.use(logger('dev'));
 app.use(logger({stream: accessLog}));
