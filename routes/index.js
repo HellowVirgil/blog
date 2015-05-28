@@ -232,6 +232,7 @@ module.exports = function(app) {
     //查询文章
     app.get('/u/:name', function (req, res) {
         var page = req.query.p ? parseInt(req.query.p) : 1;
+
         //检查用户是否存在
         User.get(req.params.name, function (err, user) {
             if (!user) {
@@ -244,6 +245,7 @@ module.exports = function(app) {
                     req.flash('error', err);
                     return res.redirect('/');
                 }
+                debugger;
                 res.render('user', {
                     title: user.name,
                     posts: posts,
@@ -348,9 +350,7 @@ module.exports = function(app) {
         var date = new Date(),
             time = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +
                 date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
-        var md5 = crypto.createHash('md5'),
-            email_MD5 = md5.update(req.body.email.toLowerCase()).digest('hex'),
-            head = "http://gravatar.blsun.net/avatar/" + email_MD5 + "?s=48";
+        var head = "images/head.jpg";
         var comment = {
             name: req.body.name,
             head: head,
