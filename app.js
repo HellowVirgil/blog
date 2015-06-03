@@ -45,15 +45,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //加载解析cookie的中间件
 app.use(cookieParser());
 //设置public文件夹为存放静态文件的目录
-app.use('/andycall', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 //错误日志中间件
 app.use(function (err, req, res, next) {
     var meta = '[' + new Date() + '] ' + req.url + '\n';
     errorLog.write(meta + err.stack + '\n');
     next();
 });
-
-
 //加载session
 app.use(session({
     secret: settings.cookieSecret,
@@ -66,10 +64,9 @@ app.use(session({
     })
 }));
 
-//路由选择
+//加载路由选择
 routes(app);
 
-//路由控制器
 app.listen(app.get('port'),function() {
     console.log('Express server listening on port ' + app.get('port'));
 });

@@ -1,5 +1,5 @@
 var mongodb = require('./db');
-var crypto = require('crypto');
+//var crypto = require('crypto');
 
 function User(user) {
     this.name = user.name;
@@ -11,7 +11,8 @@ module.exports = User;
 
 //存储用户信息
 User.prototype.save = function(callback) {
-    var head = "images/head.jpg";
+    //登陆用户头像
+    var head = "/images/head.jpg";
     //要存入数据库的用户信息文档
     var user = {
         name: this.name,

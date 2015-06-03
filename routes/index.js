@@ -350,7 +350,8 @@ module.exports = function(app) {
         var date = new Date(),
             time = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +
                 date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
-        var head = "images/head.jpg";
+        //游客头像
+        var head = "/images/head.jpg";
         var comment = {
             name: req.body.name,
             head: head,
@@ -370,7 +371,10 @@ module.exports = function(app) {
         });
     });
 
+    //404页面
     app.use(function (req, res) {
+        res.type('text/plain');
+        res.status(404);
         res.render("404");
     });
 
