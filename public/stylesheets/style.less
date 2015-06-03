@@ -204,16 +204,22 @@ nav {
     height: 35px;
     line-height: 35px;
     border: 1px solid #e67e22;
-    background: #e67e22;
+    border-radius: 3px;
+    background: #ea6753;
     color: #ffffff;
     text-align: center;
-    .transitions(all 0.2s ease-in-out);
+    .transitions(all .2s ease-in-out);
+
+    &:hover {
+      border: 1px solid #007ed9;
+      background-color: #337ab7;
+    }
   }
 }
 .post-tags {
   width: 100%;
   height: 30px;
-  padding: 10px 0;
+  padding-top: 30px;
   line-height: 30px;
   font-size: 1em;
   color: #959595;
@@ -221,6 +227,10 @@ nav {
 
   a {
     color: #959595;
+
+    &:hover {
+      color: #ea6753;
+    }
   }
 }
 .post-statistic {
