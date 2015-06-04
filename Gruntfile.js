@@ -4,13 +4,13 @@ module.exports = function (grunt) {
         less: {
             compile: {
                 files: {
-                    '/stylesheets/style.css': '/stylesheets/style.less'
+                    'public/stylesheets/style.css': 'public/stylesheets/style.less'
                 }
             }
         },
         watch: {
             scripts: {
-                files: ['/stylesheets/*.less'],
+                files: ['public/stylesheets/*.less'],
                 tasks: ['less']
             }
         }
