@@ -1,5 +1,8 @@
 <div class="widget">
-    <% posts.forEach(function (tag, index) { %>
-    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
-    <% }) %>
+    <h4 class="title"><span>标签云</span></h4>
+    <div class="tags-cloud">
+        <% tags.forEach(function (tag, index) { %>
+        <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+        <% }) %>
+    </div>
 </div>

@@ -128,6 +128,7 @@ nav {
   .widget {
     width: 90%;
     padding: 5%;
+    background-color: #fff;
   }
 }
 @media screen and (max-width: 768px) {
@@ -152,7 +153,9 @@ nav {
   }
 
   .widget {
-    padding: 35px;
+    width: 90%;
+    padding: 5%;
+    background-color: #fff;
   }
 }
 
@@ -239,7 +242,42 @@ nav {
   float: right;
 }
 
+//右侧边栏
+.title {
+  width: 100%;
+  height: 30px;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+  line-height: 30px;
+  font-size: 1.5em;
+  font-weight: normal;
+  border-bottom: 1px solid #ebebeb;
+  background-color: #fff;
 
+  span {
+    border-bottom: 1px solid #ea6753;
+  }
+}
+
+.tags-cloud {
+  width: 100%;
+
+  a {
+    display: inline-block;
+    padding: 2px 7px;
+    margin: 0 7px 7px 0;
+    color: #959595;
+    line-height: 1.5em;
+    border: 1px solid #ebebeb;
+    .transitions(all 0.2s ease);
+
+    &:hover {
+      color: #fff;
+      background-color: #ea6753;
+      border: 1px solid #ea6753;
+    }
+  }
+}
 
 
 .edit {

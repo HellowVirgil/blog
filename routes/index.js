@@ -9,30 +9,31 @@ module.exports = function(app) {
     app.get('/', function (req, res) {
         //判断是否是第一页，并把请求的页数转换成 number 类型
         var page = req.query.p ? parseInt(req.query.p) : 1;
-        Post.getTags(function (err, posts) {
-            if (err) {
-                req.flash('error', err);
-                return res.redirect('/');
-            }
-            console.log(posts);
-        });
+
         //查询并返回第 page 页的 10 篇文章
-        /*Post.getTen(null, page, function (err, posts, total) {
+        Post.getTen(null, page, function (err, posts, total) {
             if (err) {
                 posts = [];
             }
-            res.render('index', {
-                title: '主页',
-                posts: posts,
-                tags: tags,
-                page: page,
-                isFirstPage: (page - 1) == 0,
-                isLastPage: ((page - 1) * 10 + posts.length) == total,
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
+            Post.getTags(function (err, tags) {
+                if (err) {
+                    req.flash('error', err);
+                    return res.redirect('/');
+                }
+                res.render('index', {
+                    title: '主页',
+                    posts: posts,
+                    page: page,
+                    tags: tags,
+                    isFirstPage: (page - 1) == 0,
+                    isLastPage: ((page - 1) * 10 + posts.length) == total,
+                    user: req.session.user,
+                    success: req.flash('success').toString(),
+                    error: req.flash('error').toString()
+                });
             });
-        });*/
+
+        });
     });
 
     //注册页
