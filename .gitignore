@@ -1,4 +1,5 @@
 .idea
 .DS_Store
-*.log
+access.log
+error.log
 node_moudles
