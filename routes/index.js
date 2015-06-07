@@ -127,8 +127,16 @@ module.exports = function(app) {
     app.post('/post', checkLogin);
     app.post('/post', function (req, res) {
         var currentUser = req.session.user,
-            tags = [req.body.tag1, req.body.tag2, req.body.tag3],
+            tags = [],
             post = new Post(currentUser.name, currentUser.head, req.body.title, tags, req.body.post);
+        function isTag(tag) {
+            if(tag) {
+                tags.push(tag);
+            }
+        }
+        isTag(req.body.tag1);
+        isTag(req.body.tag2);
+        isTag(req.body.tag3);
         post.save(function (err) {
             if (err) {
                 req.flash('error', err);
