@@ -1,0 +1,215 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'brower-sync',
+1 verbose cli   'gulp',
+1 verbose cli   '--save-dev' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of /Users/Virgil/WebstormProjects/blog/package.json
+5 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/body-parser/package.json
+6 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/connect-flash/package.json
+7 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/connect-mongo/package.json
+8 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/cookie-parser/package.json
+9 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/debug/package.json
+10 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/ejs/package.json
+11 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/express/package.json
+12 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/express-session/package.json
+13 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/gulp/package.json
+14 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/gulp-less/package.json
+15 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/markdown/package.json
+16 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/mongodb/package.json
+17 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/morgan/package.json
+18 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/multer/package.json
+19 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/node-pre-gyp/package.json
+20 verbose installManyTop reading scoped package data from /Users/Virgil/WebstormProjects/blog/node_modules/serve-favicon/package.json
+21 info package.json connect-mongo@0.8.1 No license field.
+22 info package.json connect-flash@0.1.1 No license field.
+23 info package.json markdown@0.5.0 No license field.
+24 info package.json mongodb@2.0.33 license should be a valid SPDX license expression
+25 info package.json node-pre-gyp@0.6.7 license should be a valid SPDX license expression
+26 verbose readDependencies loading dependencies from /Users/Virgil/WebstormProjects/blog/package.json
+27 silly cache add args [ 'brower-sync', null ]
+28 verbose cache add spec brower-sync
+29 verbose install gulp is installed as 3.9.0
+30 silly cache add args [ 'gulp', null ]
+31 verbose cache add spec gulp
+32 silly cache add parsed spec { raw: 'brower-sync',
+32 silly cache add   scope: null,
+32 silly cache add   name: 'brower-sync',
+32 silly cache add   rawSpec: '',
+32 silly cache add   spec: '*',
+32 silly cache add   type: 'range' }
+33 silly addNamed brower-sync@*
+34 verbose addNamed "*" is a valid semver range for brower-sync
+35 silly addNameRange { name: 'brower-sync', range: '*', hasData: false }
+36 silly mapToRegistry name brower-sync
+37 silly mapToRegistry using default registry
+38 silly mapToRegistry registry https://registry.npmjs.org/
+39 silly mapToRegistry uri https://registry.npmjs.org/brower-sync
+40 verbose addNameRange registry:https://registry.npmjs.org/brower-sync not in flight; fetching
+41 silly cache add parsed spec { raw: 'gulp',
+41 silly cache add   scope: null,
+41 silly cache add   name: 'gulp',
+41 silly cache add   rawSpec: '',
+41 silly cache add   spec: '*',
+41 silly cache add   type: 'range' }
+42 silly addNamed gulp@*
+43 verbose addNamed "*" is a valid semver range for gulp
+44 silly addNameRange { name: 'gulp', range: '*', hasData: false }
+45 silly mapToRegistry name gulp
+46 silly mapToRegistry using default registry
+47 silly mapToRegistry registry https://registry.npmjs.org/
+48 silly mapToRegistry uri https://registry.npmjs.org/gulp
+49 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
+50 verbose request uri https://registry.npmjs.org/brower-sync
+51 verbose request no auth needed
+52 info attempt registry request try #1 at 5:53:22 PM
+53 verbose request id feb34e597db476f4
+54 http request GET https://registry.npmjs.org/brower-sync
+55 verbose request uri https://registry.npmjs.org/gulp
+56 verbose request no auth needed
+57 info attempt registry request try #1 at 5:53:22 PM
+58 verbose etag "CZ5PJQ70R4DA6Y4SHPZN69VKR"
+59 http request GET https://registry.npmjs.org/gulp
+60 http 304 https://registry.npmjs.org/gulp
+61 silly get cb [ 304,
+61 silly get   { date: 'Tue, 21 Jul 2015 09:53:24 GMT',
+61 silly get     via: '1.1 varnish',
+61 silly get     'cache-control': 'max-age=60',
+61 silly get     etag: '"CZ5PJQ70R4DA6Y4SHPZN69VKR"',
+61 silly get     age: '17',
+61 silly get     connection: 'keep-alive',
+61 silly get     'x-served-by': 'cache-bma7024-BMA',
+61 silly get     'x-cache': 'HIT',
+61 silly get     'x-cache-hits': '1',
+61 silly get     'x-timer': 'S1437472404.009730,VS0,VE1',
+61 silly get     vary: 'Accept' } ]
+62 verbose etag https://registry.npmjs.org/gulp from cache
+63 verbose get saving gulp to /Users/Virgil/.npm/registry.npmjs.org/gulp/.cache.json
+64 silly addNameRange number 2 { name: 'gulp', range: '*', hasData: true }
+65 silly addNameRange versions [ 'gulp',
+65 silly addNameRange   [ '0.0.1',
+65 silly addNameRange     '0.0.2',
+65 silly addNameRange     '0.0.3',
+65 silly addNameRange     '0.0.4',
+65 silly addNameRange     '0.0.5',
+65 silly addNameRange     '0.0.7',
+65 silly addNameRange     '0.0.8',
+65 silly addNameRange     '0.0.9',
+65 silly addNameRange     '0.1.0',
+65 silly addNameRange     '0.2.0',
+65 silly addNameRange     '1.0.0',
+65 silly addNameRange     '1.1.0',
+65 silly addNameRange     '1.2.0',
+65 silly addNameRange     '1.2.1',
+65 silly addNameRange     '2.0.0',
+65 silly addNameRange     '2.0.1',
+65 silly addNameRange     '2.1.0',
+65 silly addNameRange     '2.2.0',
+65 silly addNameRange     '2.3.0',
+65 silly addNameRange     '2.4.0',
+65 silly addNameRange     '2.4.1',
+65 silly addNameRange     '2.6.0',
+65 silly addNameRange     '2.6.1',
+65 silly addNameRange     '2.7.0',
+65 silly addNameRange     '3.0.0',
+65 silly addNameRange     '3.1.1',
+65 silly addNameRange     '3.1.2',
+65 silly addNameRange     '3.1.3',
+65 silly addNameRange     '3.1.4',
+65 silly addNameRange     '3.2.0',
+65 silly addNameRange     '3.2.1',
+65 silly addNameRange     '3.2.2',
+65 silly addNameRange     '3.2.3',
+65 silly addNameRange     '3.2.4',
+65 silly addNameRange     '3.2.5',
+65 silly addNameRange     '3.3.0',
+65 silly addNameRange     '3.3.1',
+65 silly addNameRange     '3.3.2',
+65 silly addNameRange     '3.3.4',
+65 silly addNameRange     '3.4.0',
+65 silly addNameRange     '3.5.0',
+65 silly addNameRange     '3.5.1',
+65 silly addNameRange     '3.5.2',
+65 silly addNameRange     '3.5.5',
+65 silly addNameRange     '3.5.6',
+65 silly addNameRange     '3.6.0',
+65 silly addNameRange     '3.6.1',
+65 silly addNameRange     '3.6.2',
+65 silly addNameRange     '3.7.0',
+65 silly addNameRange     '3.8.0',
+65 silly addNameRange     '3.8.1',
+65 silly addNameRange     '3.8.2',
+65 silly addNameRange     '3.8.3',
+65 silly addNameRange     '3.8.4',
+65 silly addNameRange     '3.8.5',
+65 silly addNameRange     '3.8.6',
+65 silly addNameRange     '3.8.7',
+65 silly addNameRange     '3.8.8',
+65 silly addNameRange     '3.8.9',
+65 silly addNameRange     '3.8.10',
+65 silly addNameRange     '3.8.11',
+65 silly addNameRange     '3.9.0' ] ]
+66 silly addNamed gulp@3.9.0
+67 verbose addNamed "3.9.0" is a plain semver version for gulp
+68 silly cache afterAdd gulp@3.9.0
+69 verbose afterAdd /Users/Virgil/.npm/gulp/3.9.0/package/package.json not in flight; writing
+70 verbose afterAdd /Users/Virgil/.npm/gulp/3.9.0/package/package.json written
+71 http 404 https://registry.npmjs.org/brower-sync
+72 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+72 verbose headers   'content-type': 'application/json',
+72 verbose headers   'cache-control': 'max-age=0',
+72 verbose headers   'content-length': '51',
+72 verbose headers   'accept-ranges': 'bytes',
+72 verbose headers   date: 'Tue, 21 Jul 2015 09:53:24 GMT',
+72 verbose headers   via: '1.1 varnish',
+72 verbose headers   age: '0',
+72 verbose headers   connection: 'keep-alive',
+72 verbose headers   'x-served-by': 'cache-bma7027-BMA',
+72 verbose headers   'x-cache': 'MISS',
+72 verbose headers   'x-cache-hits': '0',
+72 verbose headers   'x-timer': 'S1437472404.012434,VS0,VE819' }
+73 silly get cb [ 404,
+73 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+73 silly get     'content-type': 'application/json',
+73 silly get     'cache-control': 'max-age=0',
+73 silly get     'content-length': '51',
+73 silly get     'accept-ranges': 'bytes',
+73 silly get     date: 'Tue, 21 Jul 2015 09:53:24 GMT',
+73 silly get     via: '1.1 varnish',
+73 silly get     age: '0',
+73 silly get     connection: 'keep-alive',
+73 silly get     'x-served-by': 'cache-bma7027-BMA',
+73 silly get     'x-cache': 'MISS',
+73 silly get     'x-cache-hits': '0',
+73 silly get     'x-timer': 'S1437472404.012434,VS0,VE819' } ]
+74 verbose stack Error: 404 Not Found: brower-sync
+74 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:245:14)
+74 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+74 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+74 verbose stack     at Request.emit (events.js:110:17)
+74 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+74 verbose stack     at Request.emit (events.js:129:20)
+74 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+74 verbose stack     at IncomingMessage.emit (events.js:129:20)
+74 verbose stack     at _stream_readable.js:908:16
+74 verbose stack     at process._tickCallback (node.js:355:11)
+75 verbose statusCode 404
+76 verbose pkgid brower-sync
+77 verbose cwd /Users/Virgil/WebstormProjects/blog
+78 error Darwin 14.3.0
+79 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "brower-sync" "gulp" "--save-dev"
+80 error node v0.12.7
+81 error npm  v2.11.3
+82 error code E404
+83 error 404 Not Found: brower-sync
+83 error 404
+83 error 404 'brower-sync' is not in the npm registry.
+83 error 404 You should bug the author to publish it (or use the name yourself!)
+83 error 404 It was specified as a dependency of 'blog'
+83 error 404
+83 error 404 Note that you can also install from a
+83 error 404 tarball, folder, http url, or git url.
+84 verbose exit [ 1, true ]
