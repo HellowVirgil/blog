@@ -2,29 +2,23 @@
 <% post.comments.forEach(function (comment, index) { %>
 <ul class="media-list">
     <li class="media">
-        <div class="media-left">
-            <a href="#">
-                <img class="media-object" src="<%= comment.head %>" alt="头像">
-            </a>
-        </div>
-        <div class="media-body">
-            <a href="<%= comment.website %>"><%= comment.name %></a>
-            <span class="info"> 回复于 <%= comment.time %></span>
-        </div>
+        <a href="/u/<%= post.name %>">
+            <img class="media-object" src="<%= comment.head %>" alt="头像">
+        </a>
+        <a href="<%= comment.website %>"><%= comment.name %></a>
+        <span> 评论于 <%= comment.time %></span>
     </li>
-    <p><%- comment.content %></p>
+    <li class="media-content"><%- comment.content %></li>
 </ul>
 <% }) %>
 
-<form method="post">
+<form method="post" class="comment">
     <% if (user) { %>
     姓名：<input type="text" name="name" value="<%= user.name %>" /><br />
     邮箱：<input type="text" name="email" value="<%= user.email %>" /><br />
-    网址：<input type="text" name="website" value="/u/<%= user.name %>" /><br />
     <% } else { %>
     姓名：<input type="text" name="name" /><br />
     邮箱：<input type="text" name="email" /><br />
-    网址：<input type="text" name="website" value="http://" /><br />
     <% } %>
     <textarea name="content" rows="5" cols="80"></textarea><br />
     <input type="submit" value="留言" />

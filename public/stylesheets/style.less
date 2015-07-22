@@ -197,10 +197,6 @@ nav {
   color: #444443;
   font-size: 1.2em;
   font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-
-  p {
-    margin-bottom: 1.5em;
-  }
 }
 .post-permalink {
   width: 100%;
@@ -243,6 +239,9 @@ nav {
 }
 .post-statistic {
   float: right;
+  height: 30px;
+  line-height: 30px;
+  color: #959595;
 }
 
 //右侧边栏
@@ -315,6 +314,9 @@ footer {
   clear: both;
 }
 
+
+//文章详情页
+//编辑和删除按钮
 .edit {
   margin:3px;
   padding:2px 5px;
@@ -329,6 +331,65 @@ footer {
   color:#fff;
   -webkit-transition:color 1s linear;
 }
+//文章内容页
+.article-content {
+  margin: auto;
+  padding: 30px 0;
+
+  //针对markdown转化的html样式
+  li {
+    margin-left: 2%;
+  }
+}
+//评论组件
+//评论显示
+.media-list {
+  width: 100%;
+  list-style: none;
+  border-left: 2px solid #ea6753;
+  margin-top: 5px;
+
+  .media {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    a {
+      color: #ea6753;
+    }
+
+    span {
+      color: #555555;
+    }
+
+    a, span {
+      float: left;
+      display: block;
+      height: 50px;
+      padding: 0 5px;
+    }
+  }
+  .media-content {
+    padding: 10px 0px 10px 20px;
+
+    p {
+      word-break: break-all;
+    }
+  }
+}
+//发表评论
+.comment {
+  margin-top: 30px;
+}
+
+//页标
 .prepage a {
   float:left;
   text-decoration:none;
