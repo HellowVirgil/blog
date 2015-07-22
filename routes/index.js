@@ -32,7 +32,6 @@ module.exports = function(app) {
                     error: req.flash('error').toString()
                 });
             });
-
         });
     });
 

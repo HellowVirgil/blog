@@ -1,6 +1,6 @@
 <%- include header %>
 <div class="row">
-    <div class="main">
+    <main>
         <div>
             <% if (user && (user.name == post.name)) { %>
             <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <%- include comment %>
-    </div>
+    </main>
 </div>
 
 <%- include footer %>
