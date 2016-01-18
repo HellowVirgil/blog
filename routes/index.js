@@ -1,19 +1,40 @@
 //crypto 引入模块和 user.js 用户模型文件，crypto 是 Node.js 的一个核心模块，我们用它生成散列值来加密密码
-var crypto = require('crypto'),
-    User = require('../models/user.js'),
+/*var gravatar = require('gravatar'),
+    moment = require('moment'),*/
+var User = require('../models/user.js'),
     Post = require('../models/post.js'),
-    Comment = require('../models/comment.js');
+    Comment = require('../models/comment.js'),
+    exception = require('../lib/exception.js'),
+    md5 = require('../lib/md5.js');
 
 module.exports = function(app) {
+    //把用户登录状态的检查放到路由中间件中，在每个路径前增加路由中间件，即可实现页面权限控制
+    //我们添加 checkNotLogin 和 checkLogin 函数来实现这个功能
+    function checkLogin(req, res, next) {
+        if (!req.session.user) {
+            req.flash('error', '未登录!');
+            res.redirect('/login');
+        }
+        next();
+    }
+
+    function checkNotLogin(req, res, next) {
+        if (req.session.user) {
+            req.flash('error', '已登录!');
+            res.redirect('back');
+        }
+        next();
+    }
+
     //主页
-    app.get('/', function (req, res) {
+    app.get('/', function (req, res, next) {
         //判断是否是第一页，并把请求的页数转换成 number 类型
         var page = req.query.p ? parseInt(req.query.p) : 1;
 
         //查询并返回第 page 页的 10 篇文章
         Post.getTen(null, page, function (err, posts, total) {
             if (err) {
-                posts = [];
+                return next(err);
             }
             Post.getTags(function (err, tags) {
                 if (err) {
@@ -54,8 +75,7 @@ module.exports = function(app) {
             return res.redirect('/reg');//返回注册页
         }
         //生成密码的 md5 值
-        var md5 = crypto.createHash('md5'),
-            password = md5.update(req.body.password).digest('hex');
+        var password = md5(req.body.password);
         var newUser = new User({
             name: name,
             password: password,
@@ -94,8 +114,7 @@ module.exports = function(app) {
     });
     app.post('/login', function (req, res) {
         //生成密码的 md5 值
-        var md5 = crypto.createHash('md5'),
-            password = md5.update(req.body.password).digest('hex');
+        var password = md5(req.body.password);
         //检查用户是否存在
         User.get(req.body.name, function (err, user) {
             if (!user) {
@@ -209,7 +228,7 @@ module.exports = function(app) {
                 return res.redirect('/');
             }
             res.render('tag', {
-                title: 'TAG:' + req.params.tag,
+                title: '标签:' + req.params.tag,
                 posts: posts,
                 user: req.session.user,
                 success: req.flash('success').toString(),
@@ -393,22 +412,4 @@ module.exports = function(app) {
         res.status(404);
         res.render("404");
     });
-
-    //把用户登录状态的检查放到路由中间件中，在每个路径前增加路由中间件，即可实现页面权限控制
-    //我们添加 checkNotLogin 和 checkLogin 函数来实现这个功能
-    function checkLogin(req, res, next) {
-        if (!req.session.user) {
-            req.flash('error', '未登录!');
-            res.redirect('/login');
-        }
-        next();
-    }
-
-    function checkNotLogin(req, res, next) {
-        if (req.session.user) {
-            req.flash('error', '已登录!');
-            res.redirect('back');
-        }
-        next();
-    }
 };

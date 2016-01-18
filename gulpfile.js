@@ -9,4 +9,4 @@ gulp.task('less',function(){
 
 gulp.task('watch',function(){
     gulp.watch('public/stylesheets/*.less',['less']);
-})
+});

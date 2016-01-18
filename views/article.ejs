@@ -1,13 +1,13 @@
 <%- include header %>
 <div class="row">
+    <div>
+        <% if (user && (user.name == post.name)) { %>
+        <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
+        <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
+        <% } %>
+    </div>
     <main>
-        <div>
-            <% if (user && (user.name == post.name)) { %>
-            <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
-            <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
-            <% } %>
-            <h2 class="post-title"><%= post.title %></h2>
-        </div>
+        <h2 class="post-title"><%= post.title %></h2>
         <div class="info">
             <div class="post-meta">
                 <div class="post-meta">
@@ -29,14 +29,14 @@
             <div class="post-statistic">
                 <span>阅读：<%= post.pv %></span>
                 <span>评论：<%= post.comments.length %></span>
-                        <span>
+                        <!--<span>
                             转载：
                             <% if (post.reprint_info.reprint_to) { %>
                             <%= post.reprint_info.reprint_to.length %>
                             <% } else { %>
                             <%= 0 %>
                             <% } %>
-                        </span>
+                        </span>-->
             </div>
         </div>
         <%- include comment %>

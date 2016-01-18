@@ -1,0 +1,10 @@
+{
+  "apps" : [{
+    "name": "blog",
+    "script": "app.js",
+    "env": {
+      "PORT": 3000,
+      "DEBUG": "*"
+    }
+  }]
+}

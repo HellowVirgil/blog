@@ -78,7 +78,6 @@ nav {
   width: 8em;
   height: 1.5em;
   border: 0;
-  text-align: center;
   font-size: 1em;
   outline: none;
 }
@@ -131,6 +130,7 @@ nav {
   }
   .row aside {
     width: 100%;
+    margin-left: 0;
   }
   .widget {
     width: 90%;
@@ -185,14 +185,14 @@ nav {
   background: #ea6753;
   color: #ffffff;
   text-align: center;
-  transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
 }
 .post-permalink .btn:hover {
   border: 1px solid #007ed9;
   background-color: #337ab7;
+  transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
 }
 .post-tags {
   width: 100%;
@@ -236,15 +236,15 @@ nav {
   color: #959595;
   line-height: 1.5em;
   border: 1px solid #ebebeb;
-  transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -webkit-transition: all 0.2s ease;
 }
 .tags-cloud a:hover {
   color: #fff;
   background-color: #ea6753;
   border: 1px solid #ea6753;
+  transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
 }
 .archive {
   list-style: none;
@@ -371,4 +371,53 @@ footer {
   float: right;
   margin-top: -2.5em;
   box-shadow: 0px 1px 4px #888;
+}
+.user-post {
+  width: 80%;
+  margin: 0 auto 20px auto;
+  padding: 30px;
+  font-size: 14px;
+  background: #fff;
+  border-left: 3px solid #e67e22;
+}
+.user-post .user-post-title {
+  color: #e67e22;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  font-weight: normal;
+}
+.user-post .user-post-title a {
+  font-size: 2em;
+  color: #303030;
+}
+.user-post .user-post-meta {
+  float: right;
+}
+.user-post .user-post-meta .user-post-name,
+.user-post .user-post-meta .user-post-time {
+  color: #959595;
+}
+.user-post .user-post-meta .user-post-name {
+  margin-right: 10px;
+}
+.user-post .user-post-meta .user-post-name span {
+  margin: 0 7px;
+  white-space: nowrap;
+}
+.user-post .user-post-meta .user-post-name a {
+  color: #e67e22;
+}
+.user-post .user-post-tags {
+  width: 100%;
+  margin-top: 10px;
+  color: #959595;
+}
+.user-post .user-post-tags a {
+  color: #959595;
+}
+.user-post .user-post-tags a:hover {
+  color: #ea6753;
+}
+.user-post .user-post-statistic {
+  float: right;
 }
