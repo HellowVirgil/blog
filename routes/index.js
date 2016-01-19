@@ -53,6 +53,7 @@ module.exports = function(app) {
                         total: total,
                         hots: hots,
                         user: req.session.user,
+                        keyword: null,
                         success: req.flash('success').toString(),
                         error: req.flash('error').toString()
                     });
@@ -240,6 +241,7 @@ module.exports = function(app) {
                 posts: posts,
                 user: req.session.user,
                 total: total,
+                keyword: null,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -261,6 +263,7 @@ module.exports = function(app) {
                 page: page,
                 user: req.session.user,
                 total: total,
+                keyword: req.query.keyword,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -299,6 +302,7 @@ module.exports = function(app) {
                     page: page,
                     total: total,
                     user: req.session.user,
+                    keyword: null,
                     success: req.flash('success').toString(),
                     error: req.flash('error').toString()
                 });

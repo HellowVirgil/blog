@@ -5,9 +5,9 @@
         <span><a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a></span>
         <span><a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a></span>
         <% } %>
-        <% if (user && (user.name != post.name)) { %>
+       <!-- <% if (user && (user.name != post.name)) { %>
         <span><a class="edit" href="/reprint/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">转载</a></span>
-        <% } %>
+        <% } %> -->
     </div>
     <main>
         <h2 class="post-title"><%= post.title %></h2>

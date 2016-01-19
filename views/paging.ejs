@@ -1,4 +1,27 @@
 <ul class="page_bar">
+    <% if(keyword) { %>
+    <% if (page != 1) { %>
+    <li class="page"><a title="首页" href="?keyword=<%= keyword %>&p=<%= 1 %>">首页</a></li>
+    <% } %>
+    <% if (page > 3) { %>
+    <li class="page"><a href="?keyword=<%= keyword %>&p=<%= page-2 %>"><%= page-2 %></a></li>
+    <% } %>
+    <% if (page > 2) { %>
+    <li class="page"><a href="?keyword=<%= keyword %>&p=<%= page-1 %>"><%= page-1 %></a></li>
+    <% } %>
+    <% if (Math.ceil(total/10) > 1) { %>
+    <li class="page current_page"><span><%= page %></span></li>
+    <% } %>
+    <% if (page <= Math.ceil(total/10) - 1) { %>
+    <li class="page"><a href="?keyword=<%= keyword %>&p=<%= page+1 %>"><%= page+1 %></a></li>
+    <% } %>
+    <% if (page <= Math.ceil(total/10) - 2) { %>
+    <li class="page"><a href="?keyword=<%= keyword %>&p=<%= page+2 %>"><%= page+2 %></a></li>
+    <% } %>
+    <% if (((page - 1) * 10 + posts.length) != total) { %>
+    <li class="page"><a title="尾页" href="?keyword=<%= keyword %>&p=<%= Math.ceil(total/10) %>">尾页</a></li>
+    <% } %>
+    <% } else { %>
     <% if (page != 1) { %>
     <li class="page"><a title="首页" href="?p=<%= 1 %>">首页</a></li>
     <% } %>
@@ -19,6 +42,7 @@
     <% } %>
     <% if (((page - 1) * 10 + posts.length) != total) { %>
     <li class="page"><a title="尾页" href="?p=<%= Math.ceil(total/10) %>">尾页</a></li>
+    <% } %>
     <% } %>
     <li class="page">共 <%= Math.ceil(total/10) %> 页</li>
 </ul>

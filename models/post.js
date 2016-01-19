@@ -22,13 +22,13 @@ Post.prototype.save = function(callback) {
         day : date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
         minute : date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +
         date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
-    }
+    };
     //要存入数据库的文档
     var post = {
         name: this.name,
         head: this.head,
         time: time,
-        title:this.title,
+        title: this.title,
         tags: this.tags,
         post: this.post,
         comments: [],
@@ -477,7 +477,7 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
                 doc.name = reprint_to.name;
                 doc.head = reprint_to.head;
                 doc.time = time;
-                doc.title = (doc.title.search(/[转载]/) > -1) ? doc.title : "[转载]" + doc.title;
+                doc.title = (doc.title.search(/[转载]/) > -1) ? doc.title : "[转载] " + doc.title;
                 doc.comments = [];
                 doc.reprint_info = {"reprint_from": reprint_from};
                 doc.pv = 0;
