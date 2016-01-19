@@ -1,4 +1,5 @@
 <%- include header %>
+<% if (user) { %>
 <form method="post">
     标题：<br />
     <input type="text" name="title" /><br />
@@ -8,4 +9,7 @@
     <textarea name="post" rows="20" cols="100"></textarea><br />
     <input type="submit" value="发表" />
 </form>
+<% } else { %>
+<%- include error %>
+<% } %>
 <%- include footer %>

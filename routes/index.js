@@ -30,7 +30,6 @@ module.exports = function(app) {
     app.get('/', function (req, res, next) {
         //判断是否是第一页，并把请求的页数转换成 number 类型
         var page = req.query.p ? parseInt(req.query.p) : 1;
-
         //查询并返回第 page 页的 10 篇文章
         Post.getTen(null, page, function (err, posts, total) {
             if (err) {
@@ -46,8 +45,7 @@ module.exports = function(app) {
                     posts: posts,
                     page: page,
                     tags: tags,
-                    isFirstPage: (page - 1) == 0,
-                    isLastPage: ((page - 1) * 10 + posts.length) == total,
+                    total: total,
                     user: req.session.user,
                     success: req.flash('success').toString(),
                     error: req.flash('error').toString()
@@ -222,15 +220,19 @@ module.exports = function(app) {
         });
     });
     app.get('/tags/:tag', function (req, res) {
-        Post.getTag(req.params.tag, function (err, posts) {
+        //判断是否是第一页，并把请求的页数转换成 number 类型
+        var page = req.query.p ? parseInt(req.query.p) : 1;
+        Post.getTag(req.params.tag, page, function (err, posts, total) {
             if (err) {
                 req.flash('error',err);
                 return res.redirect('/');
             }
             res.render('tag', {
                 title: '标签:' + req.params.tag,
+                page: page,
                 posts: posts,
                 user: req.session.user,
+                total: total,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -239,15 +241,19 @@ module.exports = function(app) {
 
     //检索
     app.get('/search', function (req, res) {
-        Post.search(req.query.keyword, function (err, posts) {
+        //判断是否是第一页，并把请求的页数转换成 number 类型
+        var page = req.query.p ? parseInt(req.query.p) : 1;
+        Post.search(req.query.keyword, page, function (err, posts ,total) {
             if (err) {
                 req.flash('error', err);
                 return res.redirect('/');
             }
             res.render('search', {
-                title: "SEARCH:" + req.query.keyword,
+                title: "查询:" + req.query.keyword,
                 posts: posts,
+                page: page,
                 user: req.session.user,
+                total: total,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
@@ -267,7 +273,6 @@ module.exports = function(app) {
     //查询文章
     app.get('/u/:name', function (req, res) {
         var page = req.query.p ? parseInt(req.query.p) : 1;
-
         //检查用户是否存在
         User.get(req.params.name, function (err, user) {
             if (!user) {
@@ -285,8 +290,7 @@ module.exports = function(app) {
                     title: user.name,
                     posts: posts,
                     page: page,
-                    isFirstPage: (page - 1) == 0,
-                    isLastPage: ((page - 1) * 10 + posts.length) == total,
+                    total: total,
                     user: req.session.user,
                     success: req.flash('success').toString(),
                     error: req.flash('error').toString()

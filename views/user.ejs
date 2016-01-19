@@ -2,7 +2,7 @@
 <% posts.forEach(function (post, index) { %>
 <article class="user-post">
     <div class="user-post-info">
-        <a class="user-post-title" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+        <a class="user-post-title" href="<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
         <div class="user-post-meta">
             <span class="user-post-name">作者：<a href="/u/<%= post.name %>"><%= post.name %></a></span>
             <span class="user-post-time">日期：<%= post.time.minute %></span>

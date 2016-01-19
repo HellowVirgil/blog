@@ -109,6 +109,12 @@ nav {
     width: 90%;
     padding: 0 5%;
 
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
     main {
       float: left;
       width: 66%;
@@ -139,6 +145,12 @@ nav {
   .row {
     width: 90%;
     margin: 0 auto;
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
 
     main {
       width: 100%;
@@ -315,7 +327,6 @@ footer {
   padding-bottom: 28px;
   margin-top: 50px;
   border-top: 1px solid #303030;
-  clear: both;
 }
 
 
@@ -394,27 +405,34 @@ footer {
 }
 
 //页标
-.prepage a {
-  float:left;
-  text-decoration:none;
-  padding:.5em 1em;
-  color:#ff0000;
-  font-weight:bold;
+.page_bar {
+  margin: 0 auto;
+  text-align: center;
 }
-.nextpage a {
-  float:right;
-  text-decoration:none;
-  padding:.5em 1em;
-  color:#ff0000;
-  font-weight:bold;
+.page {
+  display: inline-block;
+  font-weight: bold;
 }
-.prepage a:hover,
-.nextpage a:hover {
-  text-decoration:none;
-  background-color:#ff0000;
-  color:#f9f9f9;
-  -webkit-transition:color .2s linear;
+.page a {
+  display: block;
+  text-decoration: none;
+  padding: .5em .5em;
+  color: #fff;
+  background-color: #ea6753;
 }
+.page a:hover {
+  text-decoration: none;
+  background-color: #337ab7;
+  color: #f9f9f9;
+  .transitions(all .2s linear);
+}
+.current_page span {
+  display: block;
+  padding: .5em .5em;
+  color: #fff;
+  background-color: #337ab7;
+}
+//头像
 .l_head {
   width: 30px;
   height: 30px;
@@ -433,7 +451,7 @@ footer {
 //用户文章列表
 .user-post {
   width: 80%;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 35px auto;
   padding: 30px;
   font-size: 14px;
   background: #fff;
