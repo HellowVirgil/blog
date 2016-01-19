@@ -40,15 +40,22 @@ module.exports = function(app) {
                     req.flash('error', err);
                     return res.redirect('/');
                 }
-                res.render('index', {
-                    title: '主页',
-                    posts: posts,
-                    page: page,
-                    tags: tags,
-                    total: total,
-                    user: req.session.user,
-                    success: req.flash('success').toString(),
-                    error: req.flash('error').toString()
+                Post.getHot(function (err, hots) {
+                    if (err) {
+                        req.flash('error', err);
+                        return res.redirect('/');
+                    }
+                    res.render('index', {
+                        title: '主页',
+                        posts: posts,
+                        page: page,
+                        tags: tags,
+                        total: total,
+                        hots: hots,
+                        user: req.session.user,
+                        success: req.flash('success').toString(),
+                        error: req.flash('error').toString()
+                    });
                 });
             });
         });

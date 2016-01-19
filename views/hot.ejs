@@ -1,0 +1,13 @@
+<div class="widget">
+    <h4 class="title">最热文章</h4>
+    <ul class="hot">
+        <% var index = 0 %>
+        <% hots.forEach(function (hot, index) { %>
+        <li>
+            <%= index + 1 %>
+            <a href="/u/<%= hot.name %>/<%= hot.time.day %>/<%= hot.title %>"><%= hot.title %></a>
+            <span>阅读数：<%= hot.pv %></span>
+        </li>
+        <% }) %>
+    </ul>
+</div>

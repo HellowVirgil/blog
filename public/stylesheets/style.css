@@ -145,6 +145,7 @@ nav {
   .widget {
     width: 90%;
     padding: 5%;
+    margin-bottom: 35px;
     background-color: #fff;
   }
 }
@@ -255,6 +256,26 @@ nav {
   -o-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
+}
+.hot {
+  list-style: none;
+  line-height: 28px;
+}
+.hot h3 {
+  margin: 0.5em 0;
+}
+.hot a {
+  width: 60%;
+  color: #959595;
+  overflow: hidden;
+}
+.hot a:hover {
+  color: #ea6753;
+}
+.hot span {
+  display: block;
+  width: 30%;
+  float: right;
 }
 .archive {
   list-style: none;

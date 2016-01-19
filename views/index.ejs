@@ -28,22 +28,21 @@
                     <div class="post-statistic">
                         <span>阅读：<%= post.pv %></span>
                         <span>评论：<%= post.comments.length %></span>
-                        <!--<span>
-                            转载：
+                        <span>转载：
                             <% if (post.reprint_info.reprint_to) { %>
                             <%= post.reprint_info.reprint_to.length %>
                             <% } else { %>
                             <%= 0 %>
                             <% } %>
-                        </span>-->
+                        </span>
                     </div>
                 </div>
             </article>
             <% }) %>
         </main>
         <aside>
+            <%- include hot %>
             <%- include tags %>
-            <%- include docs %>
         </aside>
     </div>
 </div>
