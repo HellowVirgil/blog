@@ -1,4 +1,4 @@
-<ul class="page_bar">
+<!-- <ul class="page_bar">
     <% if(keyword) { %>
     <% if (page != 1) { %>
     <li class="page"><a title="首页" href="?keyword=<%= keyword %>&p=<%= 1 %>">首页</a></li>
@@ -45,4 +45,23 @@
     <% } %>
     <% } %>
     <li class="page">共 <%= Math.ceil(total/10) %> 页</li>
+</ul> -->
+
+<ul class="am-pagination blog-pagination">
+    <% if(keyword) { %>
+    <% if (page != 1) { %>
+    <li class="am-pagination-prev"><a href="?keyword=<%= keyword %>&p=<%= page - 1 %>">&laquo; 上一页</a></li>
+    <% } %>
+    <% if ((page - 1) * 10 + posts.length != total) { %>
+    <li class="am-pagination-next"><a href="?keyword=<%= keyword %>&p=<%= page + 1 %>">下一页 &raquo;</a></li>
+    <% } %>
+    <% } else { %>
+    <% if (page != 1) { %>
+    <li class="am-pagination-prev"><a href="?p=<%= page - 1 %>">&laquo; 上一页</a></li>
+    <% } %>
+    <% if ((page - 1) * 10 + posts.length != total) { %>
+    <li class="am-pagination-next"><a href="?p=<%= page + 1 %>">下一页 &raquo;</a></li>
+    <% } %>
+    <% } %>
+
 </ul>

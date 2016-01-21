@@ -1,34 +1,46 @@
+<style>
+    .search-list {
+        padding: 14px;
+    }
+</style>
 <%- include header %>
-<% posts.forEach(function (post, index) { %>
-<article class="user-post">
-    <div class="user-post-info">
-        <a class="user-post-title" href="<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-        <div class="user-post-meta">
-            <span class="user-post-name">作者：<a href="/u/<%= post.name %>"><%= post.name %></a></span>
-            <span class="user-post-time">日期：<%= post.time.minute %></span>
-        </div>
+<div class="am-g am-g-fixed blog-g-fixed">
+    <div class="am-u-md-12">
+        <% posts.forEach(function (post, index) { %>
+        <article class="am-panel am-panel-secondary search-list">
+            <div class="am-article-meta">
+                <a class="am-article-title" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+                <div class="am-align-right">by <a href="/u/<%= post.name %>"><%= post.name %></a> posted on <%= post.time.minute %></div>
+            </div>
+
+            <div class="am-article-meta">
+                <% if (post.tags.length > 0) { %>
+                <span><i class="am-icon-tag"></i>
+                标签：<% post.tags.forEach(function (tag, index) { %>
+                    <% if (tag) { %>
+                    <a href="/tags/<%= tag %>"><%= tag %></a>
+                    <% } %>
+                    <% }) %></span>
+                <% } else { %>
+                <span><i class="am-icon-tag"></i> 标签： 快给它贴上标签吧~</span>
+                <% } %>
+
+                <div class="am-align-right">
+                    <span>阅读：<%= post.pv %></span>
+                    <span>评论：<%= post.comments.length %></span>
+                    <span>转载：
+                        <% if (post.reprint_info.reprint_to) { %>
+                        <%= post.reprint_info.reprint_to.length %>
+                        <% } else { %>
+                        <%= 0 %>
+                        <% } %>
+                    </span>
+                </div>
+            </div>
+        </article>
+        <% }) %>
+        <%- include paging %>
     </div>
 
-    <div class="user-post-tags">
-        <i class="iconfont">&#xe60f;</i>
-        标签：<% post.tags.forEach(function (tag, index) { %>
-        <% if (tag) { %>
-        <a href="/tags/<%= tag %>"><%= tag %></a>
-        <% } %>
-        <% }) %>
-        <div class="user-post-statistic">
-            <span>阅读：<%= post.pv %></span>
-            <span>评论：<%= post.comments.length %></span>
-            <!-- <span>转载：
-                <% if (post.reprint_info.reprint_to) { %>
-                <%= post.reprint_info.reprint_to.length %>
-                <% } else { %>
-                <%= 0 %>
-                <% } %>
-            </span> -->
-        </div>
-    </div>
-</article>
-<% }) %>
-<%- include paging %>
+</div>
 <%- include footer %>

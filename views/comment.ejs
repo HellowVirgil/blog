@@ -1,25 +1,51 @@
-<br />
 <% post.comments.forEach(function (comment, index) { %>
-<ul class="media-list">
-    <li class="media">
-        <a href="/u/<%= post.name %>">
-            <img class="media-object" src="<%= comment.head %>" alt="头像">
+<ul class="am-comments-list am-comments-list-flip">
+    <li class="am-comment">
+        <a href="/u/<%= comment.name %>">
+            <img src="<%= comment.head %>" alt="" class="am-comment-avatar" width="48" height="48">
         </a>
-        <a href="<%= comment.website %>"><%= comment.name %></a>
-        <span> 评论于 <%= comment.time %></span>
+        <div class="am-comment-main">
+            <header class="am-comment-hd">
+                <div class="am-comment-meta">
+                    <a href="/u/<%= comment.name %>" class="am-comment-author"><%= comment.name %></a>
+                    评论于 <time datetime="<%= comment.time %>" title="<%= comment.time %>"><%= comment.time %></time>
+                </div>
+            </header>
+            <div class="am-comment-bd"><%- comment.content %></div>
+        </div>
     </li>
-    <li class="media-content"><%- comment.content %></li>
 </ul>
 <% }) %>
 
-<form method="post" class="comment">
-    <% if (user) { %>
-    姓名：<input type="text" name="name" value="<%= user.name %>" /><br />
-    邮箱：<input type="text" name="email" value="<%= user.email %>" /><br />
-    <% } else { %>
-    姓名：<input type="text" name="name" /><br />
-    邮箱：<input type="text" name="email" /><br />
-    <% } %>
-    <textarea name="content" rows="5" cols="80"></textarea><br />
-    <input type="submit" value="留言" />
-</form>
+<ul class="am-comments-list am-comments-list-flip" name="commit-comments">
+    <li class="am-comment am-comment-flip">
+        <% if (user) { %>
+        <img src="<%= user.head %>" alt="" class="am-comment-avatar" width="48" height="48">
+        <form method="post">
+            <div class="am-comment-main">
+                <header class="am-comment-hd">
+                    <div class="am-comment-meta">
+                        添加评论
+                    </div>
+                </header>
+                <textarea class="am-comment-bd" name="content" style="width: 100%;border: none;outline: none;"></textarea>
+            </div>
+            <input type="hidden" name="name" value="<%= user.name %>">
+            <button type="submit" style="margin-right: 64px;" onclick="return document.getElementsByTagName('textarea')[0].value.length > 0 ? true : false" class="am-btn am-btn-default am-comment am-align-right">提交</button>
+        </form>
+        <% } else { %>
+        <img src="/images/head.jpg" alt="" class="am-comment-avatar" width="48" height="48">
+        <div class="am-comment-main">
+            <header class="am-comment-hd">
+                <div class="am-comment-meta">
+                    添加评论
+                </div>
+            </header>
+            <div class="am-comment-bd">登陆后才能评论哦~</div>
+        </div>
+        <% } %>
+    </li>
+</ul>
+
+
+

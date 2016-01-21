@@ -1,6 +1,6 @@
 <%- include header %>
 <!--首页文章列表-->
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <main>
             <% posts.forEach(function (post, index) { %>
@@ -28,23 +28,139 @@
                     <div class="post-statistic">
                         <span>阅读：<%= post.pv %></span>
                         <span>评论：<%= post.comments.length %></span>
-                        <!-- <span>转载：
+                        <span>转载：
                             <% if (post.reprint_info.reprint_to) { %>
                             <%= post.reprint_info.reprint_to.length %>
                             <% } else { %>
                             <%= 0 %>
                             <% } %>
-                        </span> -->
+                        </span>
                     </div>
                 </div>
             </article>
             <% }) %>
         </main>
         <aside>
-            <%- include hot %>
-            <%- include tags %>
+
         </aside>
     </div>
+</div> -->
+<style>
+    @media only screen and (min-width: 1200px) {
+        .blog-g-fixed {
+            max-width: 1200px;
+        }
+    }
+
+    @media only screen and (min-width: 641px) {
+        .blog-sidebar {
+            font-size: 1.4rem;
+        }
+    }
+
+    .blog-title {
+        margin: 10px 0 20px 0;
+    }
+
+    .blog-meta {
+        font-size: 14px;
+        margin: 10px 0 20px 0;
+        color: #222;
+    }
+
+    .blog-meta a {
+        color: #27ae60;
+    }
+
+    .blog-pagination a {
+        font-size: 1.4rem;
+    }
+
+    .blog-team a {
+        margin: 4px 8px;
+    }
+
+    .blog-team img {
+        margin-bottom: 0;
+    }
+
+    .blog-content img,
+    .blog-team img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .blog-message {
+        margin-top: 14px;
+    }
+</style>
+
+<div class="am-g am-g-fixed blog-g-fixed">
+    <div class="am-u-md-8">
+        <% posts.forEach(function (post, index) { %>
+        <article>
+            <h3 class="am-article-title blog-title">
+                <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+            </h3>
+            <h4 class="am-article-meta blog-meta">by <a href="/u/<%= post.name %>"><%= post.name %></a> posted on <%= post.time.minute %></h4>
+
+            <div class="am-g blog-content">
+                <div class="am-u-sm-12">
+                    <%- post.post %>
+                </div>
+            </div>
+
+            <a class="am-btn am-btn-success am-btn-sm" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">查看更多 →</a>
+
+            <div class="am-article-meta blog-message">
+                <% if (post.tags.length > 0) { %>
+                <span><i class="am-icon-tag"></i>
+                标签：<% post.tags.forEach(function (tag, index) { %>
+                    <% if (tag) { %>
+                    <a href="/tags/<%= tag %>"><%= tag %></a>
+                    <% } %>
+                    <% }) %></span>
+                <% } else { %>
+                <span><i class="am-icon-tag"></i> 标签： 快给它贴上标签吧~</span>
+                <% } %>
+
+                <div class="am-align-right">
+                    <span>阅读：<%= post.pv %></span>
+                    <span>评论：<%= post.comments.length %></span>
+                    <span>转载：
+                    <% if (post.reprint_info.reprint_to) { %>
+                    <%= post.reprint_info.reprint_to.length %>
+                    <% } else { %>
+                    <%= 0 %>
+                    <% } %>
+                    </span>
+                </div>
+            </div>
+        </article>
+
+        <hr class="am-article-divider">
+        <% }) %>
+
+        <%- include paging %>
+
+    </div>
+
+    <div class="am-u-md-4 blog-sidebar">
+        <div class="am-panel-group">
+            <!-- <section class="am-panel am-panel-default">
+                <div class="am-panel-hd">关于我</div>
+                <div class="am-panel-bd">
+                    <p>前所未有的中文云端字型服务，让您在 web 平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont blog
+                        正是為此而生。</p>
+                    <a class="am-btn am-btn-success am-btn-sm" href="#">查看更多 →</a>
+                </div>
+            </section> -->
+
+            <%- include hot %>
+
+            <%- include tags %>
+        </div>
+    </div>
+
 </div>
-<%- include paging %>
 <%- include footer %>

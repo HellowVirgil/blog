@@ -332,37 +332,6 @@ Post.getTags = function(callback) {
     });
 };
 
-//返回浏览次数最多的10篇文章
-Post.getHot = function(callback) {
-mongodb.open(function (err, db) {
-        if (err) {
-            return callback(err);
-        }
-        db.collection('posts', function (err, collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
-            }
-            //返回只包含 name、time、title 属性的文档组成的存档数组
-            collection.find({}, {
-                limit: 10,
-                "name": 1,
-                "time": 1,
-                "title": 1,
-                "pv": 1
-            }).sort({
-                pv: -1
-            }).toArray(function (err, docs) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null, docs);
-            });
-        })
-    });
-};
-
 //返回含有特定标签的所有文章
 Post.getTag = function(tag, page, callback) {
     mongodb.open(function (err, db) {
@@ -399,6 +368,37 @@ Post.getTag = function(tag, page, callback) {
                 });
             });
         });
+    });
+};
+
+//返回浏览次数最多的10篇文章
+Post.getTenHot = function(callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //返回只包含 name、time、title 属性的文档组成的存档数组
+            collection.find({}, {
+                limit: 10,
+                "name": 1,
+                "time": 1,
+                "title": 1,
+                "pv": 1
+            }).sort({
+                pv: -1
+            }).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null, docs);
+            });
+        })
     });
 };
 
@@ -509,7 +509,7 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
                     if (err) {
                         return callback(err);
                     }
-                    callback(err, post[0]);
+                    callback(err, [0]);
                 });
             });
         });

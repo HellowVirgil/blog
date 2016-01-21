@@ -1,20 +1,93 @@
 <%- include header %>
-<form method="post">
-    用户名：  <input type="text" name="name"/><br />
+<!-- <form method="post" action="/reg" class="reg_form">
+    <!--用户名：  <input type="text" name="name"/><br />
     密码：    <input type="password" name="password"/><br />
     确认密码：<input type="password" name="password-repeat"/><br />
     邮箱：    <input type="email" name="email"/><br />
     <input type="submit" value="注册"/>
-    <!--<div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">用户名</span>
-        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    <div class="input_group">
+        <span class="input_group_addon">用户名</span>
+        <input type="text" class="user_input" name="name">
+        <span class="warning_message"></span>
     </div>
 
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
-        <span class="input-group-addon" id="basic-addon2">@</span>
-        <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
-        <span class="input-group-addon" id="basic-addon2">.com</span>
-    </div>-->
-</form>
+    <div class="input_group">
+        <span class="input_group_addon">密码</span>
+        <input type="password" class="password_input" name="password">
+        <span class="warning_message"></span>
+    </div>
+
+    <div class="input_group">
+        <span class="input_group_addon">确认密码</span>
+        <input type="password" class="password_input">
+        <span class="warning_message"></span>
+    </div>
+
+    <div class="input_group">
+        <span class="input_group_addon">邮箱</span>
+        <input type="email" class="email_input" name="email">
+        <span class="warning_message"></span>
+    </div>
+
+    <div class="input_group">
+        <div class="submit_input">注册</div>
+    </div>
+</form> -->
+
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <h3>注册</h3>
+        <hr>
+        <form action="/reg" class="am-form" id="doc-vld-msg" method="post">
+            <fieldset>
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">用户名：</label>
+                    <input type="text" name="name" id="doc-vld-name-2-1" minlength="3" placeholder="输入用户名（至少 3 个字符）" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">密码：</label>
+                    <input type="password" name="password" id="doc-vld-password-2-1" minlength="3" placeholder="输入密码" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">确认密码：</label>
+                    <input type="password" name="password-repeat" id="doc-vld-password-2-1" minlength="3" placeholder="重新输入密码" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-email-2-1">邮箱：</label>
+                    <input type="email" name="email" id="doc-vld-email-2-1" data-validation-message="自定义提示信息：输入地球上的电子邮箱撒" placeholder="输入邮箱" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-age-2-1">年龄：</label>
+                    <input type="number" class=""  id="doc-vld-age-2-1" placeholder="输入年龄(12-120)" min="12" max="120" name="age" required />
+                </div>
+
+                <div class="am-form-group">
+                    <label>性别： </label>
+                    <label class="am-radio-inline">
+                        <input type="radio"  value="M" name="gender" required> 男
+                    </label>
+                    <label class="am-radio-inline">
+                        <input type="radio" value="F" name="gender"> 女
+                    </label>
+                    <label class="am-radio-inline">
+                        <input type="radio" value="O" name="gender"> 其他
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-ta-1">个人信息</label>
+                    <textarea class="" rows="5" id="doc-ta-1" name="message"></textarea>
+                </div>
+
+                <button class="am-btn am-btn-secondary" type="submit">提交</button>
+            </fieldset>
+        </form>
+        <br>
+    </div>
+</div>
 <%- include footer %>
+

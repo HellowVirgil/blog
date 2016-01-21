@@ -18,7 +18,10 @@ User.prototype.save = function(callback) {
         name: this.name,
         password: this.password,
         email: this.email,
-        head: head
+        head: head,
+        age: this.age,
+        gender: this.gender,
+        message: this.message
     };
     //打开数据库
     mongodb.open(function (err, db) {

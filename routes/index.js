@@ -35,12 +35,14 @@ module.exports = function(app) {
             if (err) {
                 return next(err);
             }
+            //标签云
             Post.getTags(function (err, tags) {
                 if (err) {
                     req.flash('error', err);
                     return res.redirect('/');
                 }
-                Post.getHot(function (err, hots) {
+                //最热文章
+                Post.getTenHot(function (err, hots) {
                     if (err) {
                         req.flash('error', err);
                         return res.redirect('/');
@@ -85,7 +87,10 @@ module.exports = function(app) {
         var newUser = new User({
             name: name,
             password: password,
-            email: req.body.email
+            email: req.body.email,
+            age: req.body.age,
+            gender: req.body.gender,
+            message: req.body.message
         });
         //检查用户名是否已经存在
         User.get(newUser.name, function (err, user) {
@@ -211,22 +216,7 @@ module.exports = function(app) {
         });
     });
 
-    //标签
-    app.get('/tags', function (req, res) {
-        Post.getTags(function (err, posts) {
-            if (err) {
-                req.flash('error', err);
-                return res.redirect('/');
-            }
-            res.render('tags', {
-                title: '标签',
-                posts: posts,
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
-        });
-    });
+    //某个标签的文章列表
     app.get('/tags/:tag', function (req, res) {
         //判断是否是第一页，并把请求的页数转换成 number 类型
         var page = req.query.p ? parseInt(req.query.p) : 1;
@@ -405,8 +395,6 @@ module.exports = function(app) {
         var comment = {
             name: req.body.name,
             head: head,
-            email: req.body.email,
-            website: req.body.website,
             time: time,
             content: req.body.content
         };
