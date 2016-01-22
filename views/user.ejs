@@ -6,6 +6,39 @@
 <%- include header %>
 <div class="am-g am-g-fixed blog-g-fixed">
     <div class="am-u-md-12">
+        <% if (user.name == title) { %>
+        <table class="am-table am-table-striped am-table-hover table-main">
+            <thead>
+            <tr>
+                <th class="table-title">标题</th><th class="table-type">标签</th><th class="table-author am-hide-sm-only">作者</th><th class="table-date am-hide-sm-only">修改日期</th><th class="table-set">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% posts.forEach(function (post, index) { %>
+            <tr>
+                <td><a href="#"><%= post.title %></a></td>
+                <td>
+                    <% post.tags.forEach(function (tag, index) { %>
+                    <% if (tag) { %>
+                    <a href="/tags/<%= tag %>"><%= tag %></a>
+                    <% } %>
+                    <% }) %>
+                </td>
+                <td class="am-hide-sm-only"><%= post.name %></td>
+                <td class="am-hide-sm-only"><%= post.time.minute %></td>
+                <td>
+                    <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                            <a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                            <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><span class="am-icon-trash-o"></span> 删除</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        <% } else { %>
         <% posts.forEach(function (post, index) { %>
         <article class="am-panel am-panel-secondary search-list">
             <div class="am-article-meta">
@@ -39,6 +72,7 @@
             </div>
         </article>
         <% }) %>
+        <% } %>
         <%- include paging %>
     </div>
 

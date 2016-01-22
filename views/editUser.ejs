@@ -1,0 +1,58 @@
+<%- include header %>
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <h3>个人信息</h3>
+        <hr>
+        <form action="/edit/u/<%= user.name %>" class="am-form" id="doc-vld-msg" method="post">
+            <fieldset>
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">用户名：</label>
+                    <input type="text" name="name" id="doc-vld-name-2-1" minlength="3" placeholder="输入用户名（至少 3 个字符）" value="<%= user.name %>" required disabled/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">密码：</label>
+                    <input type="password" name="password" id="doc-vld-password-2-1" minlength="3" placeholder="输入密码" value="<%= user.password %>" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">确认密码：</label>
+                    <input type="password" name="password-repeat" id="doc-vld-password-2-1" minlength="3" placeholder="重新输入密码" value="<%= user.password %>" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-email-2-1">邮箱：</label>
+                    <input type="email" name="email" id="doc-vld-email-2-1" data-validation-message="自定义提示信息：输入地球上的电子邮箱撒" placeholder="输入邮箱" value="<%= user.email %>" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-vld-age-2-1">年龄：</label>
+                    <input type="number" class=""  id="doc-vld-age-2-1" placeholder="输入年龄(12-120)" min="12" max="120" name="age" value="<%= user.age %>" required />
+                </div>
+
+                <div class="am-form-group">
+                    <label>性别： </label>
+                    <label class="am-radio-inline">
+                        <input type="radio"  value="M" name="gender" <% if (user.gender == "M") { %> checked <% } %> required> 男
+                    </label>
+                    <label class="am-radio-inline">
+                        <input type="radio" value="F" name="gender" <% if (user.gender == "F") { %> checked <% } %> > 女
+                    </label>
+                    <label class="am-radio-inline">
+                        <input type="radio" value="O" name="gender" <% if (user.gender == "O") { %> checked <% } %> > 其他
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-ta-1">个人信息</label>
+                    <textarea class="" rows="5" id="doc-ta-1" name="message"><%= user.message %></textarea>
+                </div>
+
+                <button class="am-btn am-btn-secondary" type="submit">确认修改</button>
+            </fieldset>
+        </form>
+        <br>
+    </div>
+</div>
+<%- include footer %>
+

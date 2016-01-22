@@ -5,6 +5,9 @@ function User(user) {
     this.name = user.name;
     this.password = user.password;
     this.email = user.email;
+    this.age = user.age;
+    this.gender = user.gender;
+    this.message = user.message;
 };
 
 module.exports = User;
@@ -70,6 +73,35 @@ User.get = function(name, callback) {
                     return callback(err);//失败！返回 err 信息
                 }
                 callback(null, user);//成功！返回查询的用户信息
+            });
+        });
+    });
+};
+
+//更新用户相关信息
+User.update = function(name, user, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 posts 集合
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //更新文章内容
+            collection.update({
+                "name": name
+            }, {
+                $set: {user: user}
+            }, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
             });
         });
     });

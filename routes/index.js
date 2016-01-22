@@ -315,6 +315,54 @@ module.exports = function(app) {
         });
     });
 
+    //编辑用户信息
+    app.get('/edit/u/:name', checkLogin);
+    app.get('/edit/u/:name', function (req, res) {
+        var currentUser = req.session.user;
+        User.get(currentUser.name, function (err, post) {
+            if (err) {
+                req.flash('error', err);
+                return res.redirect('back');
+            }
+            res.render('editUser', {
+                title: '用户信息',
+                user: req.session.user,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
+            });
+        });
+    });
+    app.post('/edit/u/:name', checkLogin);
+    app.post('/edit/u/:name', function (req, res) {
+        var currentUser = req.session.user;
+        var password = req.body.password,
+            password_re = req.body['password-repeat'];
+        //检验用户两次输入的密码是否一致
+        if (password_re != password) {
+            req.flash('error', '两次输入的密码不一致!');
+            return res.redirect('/reg');//返回注册页
+        }
+        //生成密码的 md5 值
+        var password = md5(req.body.password);
+        var newUser = new User({
+            name: currentUser.name,
+            password: password,
+            email: req.body.email,
+            age: req.body.age,
+            gender: req.body.gender,
+            message: req.body.message
+        });
+        User.update(currentUser.name, newUser, function (err) {
+            var url = encodeURI('/edit/u/' + req.params.name);
+            if (err) {
+                req.flash('error', err);
+                return res.redirect(url);//出错
+            }
+            req.flash('success', '修改成功!');
+            res.redirect(url);//成功
+        });
+    });
+
     //编辑文章
     app.get('/edit/:name/:day/:title', checkLogin);
     app.get('/edit/:name/:day/:title', function (req, res) {
@@ -357,7 +405,8 @@ module.exports = function(app) {
                 return res.redirect('back');
             }
             req.flash('success', '删除成功!');
-            res.redirect('/');
+            var url = encodeURI('/u/' + req.params.name);
+            res.redirect(url);
         });
     });
 
