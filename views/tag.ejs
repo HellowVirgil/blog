@@ -9,7 +9,7 @@
         <% posts.forEach(function (post, index) { %>
         <article class="am-panel am-panel-secondary search-list">
             <div class="am-article-meta">
-                <a class="am-article-title" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+                <a class="am-article-title" href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
                 <div class="am-align-right">by <a href="/u/<%= post.name %>"><%= post.name %></a> posted on <%= post.time.minute %></div>
             </div>
 

@@ -1,12 +1,12 @@
+<%- include header %>
 <style>
     .search-list {
         padding: 14px;
     }
 </style>
-<%- include header %>
 <div class="am-g am-g-fixed blog-g-fixed">
     <div class="am-u-md-12">
-        <% if (user.name == title) { %>
+        <% if (user && (user.name == title)) { %>
         <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
             <tr>

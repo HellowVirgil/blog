@@ -8,7 +8,7 @@ function User(user) {
     this.age = user.age;
     this.gender = user.gender;
     this.message = user.message;
-};
+}
 
 module.exports = User;
 
@@ -86,16 +86,22 @@ User.update = function(name, user, callback) {
             return callback(err);
         }
         //读取 posts 集合
-        db.collection('posts', function (err, collection) {
+        db.collection('users', function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
             //更新文章内容
             collection.update({
-                "name": name
+                name: name
             }, {
-                $set: {user: user}
+                $set: {
+                    age: user.age,
+                    gender: user.gender,
+                    email: user.email,
+                    password: user.password,
+                    message: user.message
+                }
             }, function (err) {
                 mongodb.close();
                 if (err) {
