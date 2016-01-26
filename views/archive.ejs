@@ -1,12 +1,21 @@
 <%- include header %>
-<ul class="archive">
-    <% var lastYear = 0 %>
-    <% posts.forEach(function (post, index) { %>
-    <% if (lastYear != post.time.year) { %>
-    <li><h3><%= post.time.year %></h3></li>
-    <% lastYear=post.time.year } %>
-    <li><time><%= post.time.day %></time></li>
-    <li><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></li>
-    <% }) %>
-</ul>
+<style>
+    .archive-hd {
+        border: none;
+    }
+</style>
+
+<div class="am-g am-g-fixed">
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd archive-hd"><%= year %></div>
+        <ul class="am-list">
+            <% posts.forEach(function (post, index) { %>
+            <li>
+                <a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %><time class="am-align-right"><%= post.time.day %></time></a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+    <%- include paging %>
+</div>
 <%- include footer %>
