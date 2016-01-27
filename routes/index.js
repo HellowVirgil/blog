@@ -352,7 +352,7 @@ module.exports = function(app) {
         }
 
         //生成密码的 md5 值
-        password = md5(password);
+        if (password.length != 32) password = md5(password);
         var newUser = new User({
             name: currentUser.name,
             password: password,
@@ -468,7 +468,6 @@ module.exports = function(app) {
 
     //404页面
     app.use(function (req, res) {
-        res.type('text/plain');
         res.status(404);
         res.render("404");
     });

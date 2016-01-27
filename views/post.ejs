@@ -1,15 +1,31 @@
 <%- include header %>
 <% if (user) { %>
-<form method="post">
-    标题：<br />
-    <input type="text" name="title" /><br />
-    标签：<br />
-    <input type="text" name="tag1" /><input type="text" name="tag2" /><input type="text" name="tag3" /><br />
-    正文：<br />
-    <textarea name="post" rows="20" cols="100"></textarea><br />
-    <input type="submit" value="发表" />
-</form>
-<% } else { %>
-<%- include error %>
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <h3>个人信息</h3>
+        <hr>
+        <form class="am-form" id="doc-vld-msg" method="post">
+            <fieldset>
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">标题：</label>
+                    <input type="text" name="title" maxlength="40" id="doc-vld-name-2-1" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-tag">标签：</label>
+                    <input type="text" name="tag1" maxlength="45" id="doc-tag" placeholder="多个标签使用『;』分隔"/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-ta-1">正文</label>
+                    <textarea class="" rows="9" maxlength="200" placeholder="使用markdown语法" id="doc-ta-1" name="post" required></textarea>
+                </div>
+
+                <button class="am-btn am-btn-secondary" type="submit">发布</button>
+            </fieldset>
+        </form>
+        <br>
+    </div>
+</div>
 <% } %>
 <%- include footer %>

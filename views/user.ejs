@@ -3,9 +3,12 @@
     .search-list {
         padding: 14px;
     }
+    .content {
+        min-height: 560px;
+    }
 </style>
 <div class="am-g am-g-fixed blog-g-fixed">
-    <div class="am-u-md-12">
+    <div class="am-u-md-12 content">
         <% if (user && (user.name == title)) { %>
         <table class="am-table am-table-striped am-table-hover table-main">
             <thead>
@@ -61,13 +64,13 @@
                 <div class="am-align-right">
                     <span>阅读：<%= post.pv %></span>
                     <span>评论：<%= post.comments.length %></span>
-                    <span>转载：
+                    <!-- <span>转载：
                         <% if (post.reprint_info.reprint_to) { %>
                         <%= post.reprint_info.reprint_to.length %>
                         <% } else { %>
                         <%= 0 %>
                         <% } %>
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </article>

@@ -1,13 +1,29 @@
 <%- include header %>
-<form method="post">
-    标题：<br />
-    <input type="text" name="title" value="<%= post.title %>" disabled="disabled" /><br />
-    标签：<br />
-    <input type="text" name="tag1" value="<%= post.tags[0] %>" disabled="disabled" />
-    <input type="text" name="tag2" value="<%= post.tags[1] %>" disabled="disabled" />
-    <input type="text" name="tag3" value="<%= post.tags[2] %>" disabled="disabled" /><br />
-    正文：<br />
-    <textarea name="post" rows="20" cols="100"><%= post.post %></textarea><br />
-    <input type="submit" value="保存修改" />
-</form>
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <h3>个人信息</h3>
+        <hr>
+        <form class="am-form" id="doc-vld-msg" method="post">
+            <fieldset>
+                <div class="am-form-group">
+                    <label for="doc-vld-name-2-1">标题：</label>
+                    <input type="text" name="title" maxlength="20" id="doc-vld-name-2-1" value="<%= post.title %>" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-tag">标签：</label>
+                    <input type="text" name="tag1" maxlength="15" id="doc-tag" placeholder="多个标签使用『;』分隔" value="<%= post.tags.join(";") %>" required/>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="doc-ta-1">正文</label>
+                    <textarea class="" rows="9" maxlength="200" id="doc-ta-1" name="post"><%= post.post %></textarea>
+                </div>
+
+                <button class="am-btn am-btn-secondary" type="submit">保存修改</button>
+            </fieldset>
+        </form>
+        <br>
+    </div>
+</div>
 <%- include footer %>

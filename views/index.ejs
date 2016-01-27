@@ -1,50 +1,4 @@
 <%- include header %>
-<!--首页文章列表-->
-<!-- <div class="container">
-    <div class="row">
-        <main>
-            <% posts.forEach(function (post, index) { %>
-            <article>
-                <div class="info">
-                    <h2 class="post-title">
-                        <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
-                    </h2>
-                    <div class="post-meta">
-                        <span class="post-name">作者：<a href="/u/<%= post.name %>"><%= post.name %></a></span>
-                        <span class="post-time">日期：<%= post.time.minute %></span>
-                    </div>
-                </div>
-                <div class="post-content"><%- post.post %></div>
-                <div class="post-permalink">
-                    <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" class="btn">阅读全文</a>
-                </div>
-                <div class="post-tags">
-                    <i class="iconfont">&#xe60f;</i>
-                    标签：<% post.tags.forEach(function (tag, index) { %>
-                        <% if (tag) { %>
-                        <a href="/tags/<%= tag %>"><%= tag %></a>
-                        <% } %>
-                    <% }) %>
-                    <div class="post-statistic">
-                        <span>阅读：<%= post.pv %></span>
-                        <span>评论：<%= post.comments.length %></span>
-                        <span>转载：
-                            <% if (post.reprint_info.reprint_to) { %>
-                            <%= post.reprint_info.reprint_to.length %>
-                            <% } else { %>
-                            <%= 0 %>
-                            <% } %>
-                        </span>
-                    </div>
-                </div>
-            </article>
-            <% }) %>
-        </main>
-        <aside>
-
-        </aside>
-    </div>
-</div> -->
 <style>
     @media only screen and (min-width: 1200px) {
         .blog-g-fixed {
@@ -127,13 +81,13 @@
                 <div class="am-align-right">
                     <span>阅读：<%= post.pv %></span>
                     <span>评论：<%= post.comments.length %></span>
-                    <span>转载：
+                    <!-- <span>转载：
                     <% if (post.reprint_info.reprint_to) { %>
                     <%= post.reprint_info.reprint_to.length %>
                     <% } else { %>
                     <%= 0 %>
                     <% } %>
-                    </span>
+                    </span> -->
                 </div>
             </div>
         </article>
@@ -147,17 +101,7 @@
 
     <div class="am-u-md-4 blog-sidebar">
         <div class="am-panel-group">
-            <!-- <section class="am-panel am-panel-default">
-                <div class="am-panel-hd">关于我</div>
-                <div class="am-panel-bd">
-                    <p>前所未有的中文云端字型服务，让您在 web 平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont blog
-                        正是為此而生。</p>
-                    <a class="am-btn am-btn-success am-btn-sm" href="#">查看更多 →</a>
-                </div>
-            </section> -->
-
             <%- include hot %>
-
             <%- include tags %>
         </div>
     </div>

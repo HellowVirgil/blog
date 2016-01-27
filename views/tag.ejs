@@ -1,10 +1,13 @@
+<%- include header %>
 <style>
     .search-list {
         padding: 14px;
     }
+    .content {
+        min-height: 560px;
+    }
 </style>
-<%- include header %>
-<div class="am-g am-g-fixed blog-g-fixed">
+<div class="am-g am-g-fixed content">
     <div class="am-u-md-12">
         <% posts.forEach(function (post, index) { %>
         <article class="am-panel am-panel-secondary search-list">
