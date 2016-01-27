@@ -446,7 +446,8 @@ module.exports = function(app) {
     app.post('/u/:name/:day/:title', function (req, res) {
         var date = new Date(),
             time = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +
-                date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+                date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ":" +
+                date.getSeconds();
         //游客头像
         var head = "/images/head.jpg";
         var comment = {
@@ -462,6 +463,19 @@ module.exports = function(app) {
                 return res.redirect('back');
             }
             req.flash('success', '留言成功!');
+            res.redirect('back');
+        });
+    });
+
+    //删除评论
+    app.get('/removeComment/:name/:day/:title/:commenter/:time', checkLogin);
+    app.get('/removeComment/:name/:day/:title/:commenter/:time', function (req, res) {
+        Comment.remove(req.params.name, req.params.day, req.params.title, req.params.commenter, req.params.time, function (err) {
+            if (err) {
+                req.flash('error', err);
+                return res.redirect('/');
+            }
+            req.flash('success', '删除成功!');
             res.redirect('back');
         });
     });

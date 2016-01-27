@@ -1,8 +1,8 @@
 var mongodb = require('./db');
 
-function Comment(name, day, title, comment) {
+function Comment(name, time, title, comment) {
     this.name = name;
-    this.day = day;
+    this.time = time;
     this.title = title;
     this.comment = comment;
 }
@@ -32,8 +32,10 @@ Comment.prototype.save = function(callback) {
                 "time.day": day,
                 "title": title
             }, {
-                $push: {"comments": comment}
-            } , function (err) {
+                $push: {
+                    "comments": comment
+                }
+            }, function (err) {
                 mongodb.close();
                 if (err) {
                     return callback(err);
@@ -41,5 +43,38 @@ Comment.prototype.save = function(callback) {
                 callback(null);
             });
         });
+    });
+};
+
+//删除一条留言信息
+Comment.remove = function (name, day, title, commenter, time, callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection("posts", function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            collection.update({
+                "name": name,
+                "time.day": day,
+                "title": title
+            }, {
+                $pull: {
+                    "comments": {
+                        "time": time,
+                        "name": commenter
+                    }
+                }
+            }, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        })
     });
 };
