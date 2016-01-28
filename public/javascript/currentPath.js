@@ -1,15 +1,12 @@
 var url = document.URL;
-var nav = document.getElementsByClassName("am-nav")[0];
-var li = nav.getElementsByTagName("li");
+var li = $(".am-nav li");
+var a = li.children("a");
 
 function searchPath(location) {
     for (var i = 0,len = li.length;i < len;i++) {
-        var a = li[i].getElementsByTagName("a")[0];
-        if (a) {
-            li[i].className.splice("am-active");
-            if (a.href == location) {
-                li[i].className += "am-active";
-            }
+        li[i].className = li[i].className.split("am-active").join("");
+        if (a[i].href == location) {
+            li[i].className += " am-active";
         }
     }
 }
