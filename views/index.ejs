@@ -3,6 +3,7 @@
     @media only screen and (min-width: 1200px) {
         .blog-g-fixed {
             max-width: 1200px;
+            min-height: 560px;
         }
     }
 
@@ -64,7 +65,7 @@
                 </div>
             </div>
 
-            <a class="am-btn am-btn-success am-btn-sm" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">查看更多 →</a>
+            <!-- <a class="am-btn am-btn-success am-btn-sm" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">查看更多 →</a> -->
 
             <div class="am-article-meta blog-message">
                 <% if (post.tags.length > 0) { %>

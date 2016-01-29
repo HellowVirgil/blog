@@ -3,8 +3,14 @@
     .search-list {
         padding: 14px;
     }
+    .content {
+        min-height: 560px;
+    }
+    .no-result {
+        text-align: center;
+    }
 </style>
-<div class="am-g am-g-fixed blog-g-fixed">
+<div class="am-g am-g-fixed blog-g-fixed content">
     <div class="am-u-md-12">
         <% posts.forEach(function (post, index) { %>
         <article class="am-panel am-panel-secondary search-list">
@@ -39,6 +45,11 @@
             </div>
         </article>
         <% }) %>
+
+        <% if (posts.length == 0) { %>
+        <p class="no-result">查询不到相关文章</p>
+        <% } %>
+
         <%- include paging %>
     </div>
 

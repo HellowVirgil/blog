@@ -76,7 +76,7 @@
 </style>
 
 <header class="am-g my-head">
-    <div class="am-u-sm-12 am-article">
+    <div class="am-u-sm-12">
         <h1 class="am-article-title"><%= post.title %></h1>
         <a href="/u/<%= post.name %>" class="am-article-meta"><%= post.name %></a>
     </div>
@@ -91,7 +91,7 @@
                     <%- post.post %>
                 </div>
 
-                <hr class="am-article-divider" name="comments">
+                <hr>
 
                 <%- include comment %>
             </div>
@@ -102,9 +102,9 @@
         <div class="am-offcanvas" id="sidebar">
             <div class="am-offcanvas-bar">
                 <ul class="am-nav">
-                    <li><a href="#"><%= post.title %></a></li>
+                    <li><a href="#title"><%= post.title %></a></li>
                     <li class="am-nav-header">目录</li>
-                    <li><a href="#">原文</a></li>
+                    <li><a href="#content">原文</a></li>
                     <li><a href="#comments">读者评论</a></li>
                     <li><a href="#commit-comments">发表评论</a></li>
                 </ul>
@@ -115,3 +115,18 @@
 </div>
 
 <%- include footer %>
+<script>
+    var sideBar = $(".am-offcanvas-bar");
+    sideBar.click(function (e) {
+        var target = e.target;
+        switch (target.href.split("#")[1]) {
+            case "title": $(document).scrollTop(50);
+                break;
+            case "content": $(document).scrollTop(197);
+                break;
+            case "comments": $(document).scrollTop(197 + 50 + $(".am-article")[0].offsetHeight);
+                break;
+            case "commit-comments": $(document).scrollTop(document.body.offsetHeight);
+        }
+    });
+</script>
