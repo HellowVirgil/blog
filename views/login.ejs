@@ -9,7 +9,7 @@
 </style>
 <div class="am-g content">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered login-form">
-        <h3>登录</h3>
+        <h3><%- title %> <span class="am-badge am-badge-danger am-text-lg"><%- error %></span><span class="am-badge am-badge-success am-text-lg"><%- success %></span></h3>
         <hr>
         <form method="post" class="am-form" action="/login">
             <label for="name">用户名:</label>

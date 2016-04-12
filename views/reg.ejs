@@ -1,9 +1,15 @@
 <%- include header %>
+<style>
+    .reg-form {
+        margin-top: 50px;
+    }
+</style>
 <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-        <h3>注册</h3>
-        <hr>
-        <form action="/reg" class="am-form" id="doc-vld-msg" method="post">
+
+        <form action="/reg" class="am-form reg-form" id="doc-vld-msg" method="post">
+            <h3><%- title %> <span class="am-badge am-badge-danger am-text-lg"><%- error %></span></h3>
+            <hr>
             <fieldset>
                 <div class="am-form-group">
                     <label for="doc-vld-name-2-1">用户名：</label>
@@ -12,7 +18,7 @@
 
                 <div class="am-form-group">
                     <label for="doc-vld-name-2-1">密码：</label>
-                    <input type="password" name="password" id="doc-vld-password-2-1" minlength="12" maxlength="16" placeholder="输入密码" required/>
+                    <input type="password" name="password" id="doc-vld-password-2-1" minlength="12" maxlength="16" placeholder="输入密码(至少为12位字符)" required/>
                 </div>
 
                 <div class="am-form-group">

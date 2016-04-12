@@ -109,8 +109,8 @@ module.exports = function(app) {
                     return res.redirect('/reg');//注册失败返回主册页
                 }
                 req.session.user = user;//用户信息存入 session
-                req.flash('success', '注册成功!');
-                res.redirect('/');//注册成功后返回主页
+                req.flash('success', '注册成功!请登录');
+                res.redirect('/login');//注册成功后返回登陆页
             });
         });
     });
@@ -121,7 +121,8 @@ module.exports = function(app) {
             title: '登录',
             user: req.session.user,
             success: req.flash('success').toString(),
-            error: req.flash('error').toString()});
+            error: req.flash('error').toString()
+        });
     });
     app.post('/login', function (req, res) {
         //生成密码的 md5 值
