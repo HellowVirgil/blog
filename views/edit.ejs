@@ -7,17 +7,17 @@
             <fieldset>
                 <div class="am-form-group">
                     <label for="doc-vld-name-2-1">标题：</label>
-                    <input type="text" name="title" maxlength="20" id="doc-vld-name-2-1" value="<%= post.title %>" required/>
+                    <input type="text" name="title" id="doc-vld-name-2-1" value="<%= post.title %>" required/>
                 </div>
 
                 <div class="am-form-group">
                     <label for="doc-tag">标签：</label>
-                    <input type="text" name="tags" maxlength="15" id="doc-tag" placeholder="多个标签使用『;』分隔" value="<%= post.tags.join(";") %>" required/>
+                    <input type="text" name="tags" id="doc-tag" placeholder="多个标签使用『;』分隔" value="<%= post.tags.join(";") %>" required/>
                 </div>
 
                 <div class="am-form-group">
                     <label for="doc-ta-1">正文</label>
-                    <textarea class="" rows="9" maxlength="200" id="doc-ta-1" name="post"><%= post.post %></textarea>
+                    <textarea class="" rows="9" id="doc-ta-1" name="post"><%= post.post %></textarea>
                 </div>
 
                 <button class="am-btn am-btn-secondary" type="submit">保存修改</button>

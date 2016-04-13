@@ -19,7 +19,7 @@
             <tbody>
             <% posts.forEach(function (post, index) { %>
             <tr>
-                <td><a href="#"><%= post.title %></a></td>
+                <td><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></td>
                 <td>
                     <% post.tags.forEach(function (tag, index) { %>
                     <% if (tag) { %>
