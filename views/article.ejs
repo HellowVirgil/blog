@@ -79,7 +79,7 @@
     }
 </style>
 
-<header class="am-g my-head">
+<header class="am-g my-head" id="article-title">
     <div class="am-u-sm-12">
         <h1 class="am-article-title"><%= post.title %></h1>
         <a href="/u/<%= post.name %>" class="am-article-meta"><%= post.name %></a>
@@ -91,13 +91,14 @@
     <div class="am-u-md-9 am-u-md-push-3">
         <div class="am-g">
             <div class="am-u-sm-11 am-u-sm-centered">
-                <div class="am-cf am-article">
+                <div class="am-cf am-article" id="article-content">
                     <%- post.post %>
                 </div>
 
                 <hr>
-
-                <%- include comment %>
+                <div id="article-comments">
+                    <%- include comment %>
+                </div>
             </div>
         </div>
     </div>
@@ -106,11 +107,11 @@
         <div class="am-offcanvas" id="sidebar">
             <div class="am-offcanvas-bar">
                 <ul class="am-nav">
-                    <li><a href="#title"><%= post.title %></a></li>
+                    <li><a href="#article-title"><%= post.title %></a></li>
                     <li class="am-nav-header">目录</li>
-                    <li><a href="#content">原文</a></li>
-                    <li><a href="#comments">读者评论</a></li>
-                    <li><a href="#commit-comments">发表评论</a></li>
+                    <li><a href="#article-content">原文</a></li>
+                    <li><a href="#article-comments">读者评论</a></li>
+                    <li><a href="#article-commit-comments">发表评论</a></li>
                 </ul>
             </div>
         </div>
@@ -121,16 +122,13 @@
 <%- include footer %>
 <script>
     var sideBar = $(".am-offcanvas-bar");
-    sideBar.click(function (e) {
-        var target = e.target;
-        switch (target.href.split("#")[1]) {
-            case "title": $(document).scrollTop(50);
-                break;
-            case "content": $(document).scrollTop(197);
-                break;
-            case "comments": $(document).scrollTop(197 + 50 + $(".am-article")[0].offsetHeight);
-                break;
-            case "commit-comments": $(document).scrollTop(document.body.offsetHeight);
-        }
+    sideBar.on("click", "a", function (e) {
+        var el = $(this);
+        e.preventDefault();
+        var href = el.attr('href');
+        $('body,html').animate({ scrollTop: $(href).offset().top });
+        $(document).animate({
+            scrollTop: $(href).offset().top
+        });
     });
 </script>
