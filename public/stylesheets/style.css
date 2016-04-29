@@ -28,6 +28,9 @@ body {
   font-family: "Microsoft YaHei";
   background-color: #ebebeb;
 }
+body .content {
+  min-height: 860px;
+}
 header {
   width: 100%;
 }
